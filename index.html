@@ -32,7 +32,7 @@
             }
 
             // 建立 CSV 內容
-            let csvContent = "帳號,密碼\n" + username + "," + password + "\n";
+            let csvContent = "Account,Password\n" + username + "," + password + "\n";
 
             // 產生 Blob（位元物件）並設定為 CSV 格式
             let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
