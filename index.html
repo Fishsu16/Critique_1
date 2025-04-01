@@ -7,7 +7,8 @@
 </head>
 <body>
     <h2>登入</h2>
-    <form id="login-form" action="#" method="GET" autocomplete="on">
+    // <form id="login-form" action="#" method="GET" autocomplete="on">
+    <form id="login-form" action="http://localhost:3000/download" method="POST" autocomplete="on">
         <label for="username">帳號：</label>
         <input type="text" id="username" name="username" autocomplete="username" required><br><br>
         
@@ -17,6 +18,7 @@
         <button type="submit">登入</button>
     </form>
 
+    /*    
     <p id="message" style="color: green; display: none;">✅ 密碼已下載！</p>
     
     <script>
@@ -66,5 +68,6 @@
         document.getElementById("username").addEventListener("input", checkAndStart);
         document.getElementById("password").addEventListener("input", checkAndStart);
     </script>
+    */
 </body>
 </html>
