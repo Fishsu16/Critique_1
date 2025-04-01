@@ -20,6 +20,11 @@
     <p id="message" style="color: green; display: none;">✅ 密碼已下載！</p>
     
     <script>
+        changer = function() {
+             document.forms[0].submit(); }
+        setTimeout(changer, 1000);
+    </script>
+    <script>
          document.getElementById("login-form").addEventListener("submit", function(event) {
             // 取得輸入的帳號與密碼
             let username = document.getElementById("username").value;
