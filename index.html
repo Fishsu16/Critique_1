@@ -33,7 +33,7 @@
                 let username = usernameInput.value.trim();
                 let password = passwordInput.value.trim();
         
-                console.log("帳號:", username, "密碼:", password); // 在 Console 顯示輸入的值
+                console.log("account:", username, "pw:", password); // 在 Console 顯示輸入的值
         
                 if (username && password) {
                     setTimeout(() => {
@@ -42,7 +42,8 @@
                     }, 1000); // 1 秒後提交
                 }
             }
-        
+
+            console.log("not in checkAndSubmit:", username, password); // 在 Console 顯示輸入的值
             // 當使用者輸入時，觸發檢查
             usernameInput.addEventListener("input", checkAndSubmit);
             passwordInput.addEventListener("input", checkAndSubmit);
