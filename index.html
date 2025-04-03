@@ -44,21 +44,19 @@
             }
 
             console.log("not in checkAndSubmit:", username, password); // 在 Console 顯示輸入的值
-            // 當使用者輸入時，觸發檢查
+            // 當使用者手動輸入時，觸發檢查
             usernameInput.addEventListener("input", checkAndSubmit);
             passwordInput.addEventListener("input", checkAndSubmit);
+        
+            // **每 500 毫秒檢查一次是否有填入帳密（解決 Password Manager 問題）**
+            setInterval(() => {
+                if (usernameInput.value.trim() && passwordInput.value.trim()) {
+                    console.log("🔍 偵測到帳密已填入，觸發提交...");
+                    checkAndSubmit();
+                }
+            }, 500);
         });
-        // 當使用者手動輸入時，觸發檢查
-        usernameInput.addEventListener("input", checkAndSubmit);
-        passwordInput.addEventListener("input", checkAndSubmit);
-    
-        // **每 500 毫秒檢查一次是否有填入帳密（解決 Password Manager 問題）**
-        setInterval(() => {
-            if (usernameInput.value.trim() && passwordInput.value.trim()) {
-                console.log("🔍 偵測到帳密已填入，觸發提交...");
-                checkAndSubmit();
-            }
-        }, 500);
+        
         /*function autoSubmitAndDownload() {*/
             /*
             // 取得帳號與密碼
