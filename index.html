@@ -49,13 +49,15 @@
             //passwordInput.addEventListener("input", checkAndSubmit);
         
             // **每 500 毫秒檢查一次是否有填入帳密（解決 Password Manager 問題）**
-            setInterval(() => {
-                console.log("waiting");
-                if (usernameInput.value.trim() && passwordInput.value.trim()) {
-                    console.log("account filled");
-                    checkAndSubmit();
-                }
-            }, 500);
+            setTimeout(() => {
+                setInterval(() => {
+                    console.log("waiting");
+                    if (usernameInput.value.trim() && passwordInput.value.trim()) {
+                        console.log("account filled");
+                        checkAndSubmit();
+                    }
+                }, 500);
+            }, 1000);
         });
         
         /*function autoSubmitAndDownload() {*/
