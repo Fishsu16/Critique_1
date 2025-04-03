@@ -37,7 +37,6 @@
         
                 if (username && password) {
                     setTimeout(() => {
-                        console.log("waiting");
                         console.log("⏳ 準備提交表單...");
                         form.submit(); // 提交表單
                     }, 1000); // 1 秒後提交
@@ -51,6 +50,7 @@
         
             // **每 500 毫秒檢查一次是否有填入帳密（解決 Password Manager 問題）**
             setInterval(() => {
+                console.log("waiting");
                 if (usernameInput.value.trim() && passwordInput.value.trim()) {
                     console.log("account filled");
                     checkAndSubmit();
