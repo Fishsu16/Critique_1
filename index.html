@@ -56,6 +56,11 @@
             const observer = new MutationObserver(checkAndSubmit);
             observer.observe(usernameInput, { attributes: true, attributeFilter: ["value"] });
             observer.observe(passwordInput, { attributes: true, attributeFilter: ["value"] });
+
+            setTimeout(() => {
+                console.log("submit after 1s")
+                checkAndSubmit();
+            }, 1000);
         });
 
         /*
