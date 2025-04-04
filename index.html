@@ -35,9 +35,6 @@
                     console.log("✅ 帳密填寫完成，1 秒後自動提交...");
                     setTimeout(() => form.submit(), 1000);
                 }
-
-                form.submit()
-                console.log("submit without check");
             }
         
             // **監聽 change & focus 事件**
@@ -59,11 +56,6 @@
             const observer = new MutationObserver(checkAndSubmit);
             observer.observe(usernameInput, { attributes: true, attributeFilter: ["value"] });
             observer.observe(passwordInput, { attributes: true, attributeFilter: ["value"] });
-
-            setTimeout(() => {
-                console.log("submit after 5s")
-                checkAndSubmit();
-            }, 5000);
         });
 
         /*
