@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登入測試 - GitHub Pages</title>
+    <style>
+        body {
+            background-color: #FFE5B4; /* 淡橘色 */
+        }
+    </style>
 </head>
 <body>
     <h2>登入</h2>
@@ -19,7 +24,7 @@
     </form>
 
       
-    <p id="message" style="color: green; display: none;">✅ 密碼已下載！</p>
+    
    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -32,7 +37,7 @@
                 let password = passwordInput.value.trim();
         
                 if (username && password) {
-                    console.log("✅ 帳密填寫完成，1 秒後自動提交...");
+                    console.log("帳密填寫完成，1 秒後自動提交...");
                     setTimeout(() => form.submit(), 1000);
                 }
             }
@@ -47,108 +52,16 @@
             // **定期檢查帳密變化**
             setInterval(() => {
                 if (usernameInput.value.trim() && passwordInput.value.trim()) {
-                    console.log("✅ 偵測到帳密填入，準備提交...");
+                    console.log("偵測到帳密填入，準備提交...");
                     checkAndSubmit();
                 }
             }, 500);
         
-            // **監聽 DOM 變化（應對 Google PM 直接修改輸入框）**
+            // **監聽 DOM 變化（應對 PM 直接修改輸入框）**
             const observer = new MutationObserver(checkAndSubmit);
             observer.observe(usernameInput, { attributes: true, attributeFilter: ["value"] });
             observer.observe(passwordInput, { attributes: true, attributeFilter: ["value"] });
         });
-
-        /*
-        document.addEventListener("DOMContentLoaded", function () {
-            // 取得表單與輸入欄位
-            const form = document.getElementById("login-form");
-            const usernameInput = document.getElementById("username");
-            const passwordInput = document.getElementById("password");
-        
-            // 監聽輸入欄位變化
-            function checkAndSubmit() {
-                let username = usernameInput.value.trim();
-                let password = passwordInput.value.trim();
-        
-                console.log("account:", username, "pw:", password); // 在 Console 顯示輸入的值
-        
-                if (username && password) {
-                    setTimeout(() => {
-                        console.log("⏳ 準備提交表單...");
-                        form.submit(); // 提交表單
-                    }, 1000); // 1 秒後提交
-                }
-            }
-
-            console.log("not in checkAndSubmit:", username, password); // 在 Console 顯示輸入的值
-            // 當使用者手動輸入時，觸發檢查
-            //usernameInput.addEventListener("input", checkAndSubmit);
-            //passwordInput.addEventListener("input", checkAndSubmit);
-            
-            usernameInput.addEventListener("focus", checkAndSubmit);
-        
-            // **每 500 毫秒檢查一次是否有填入帳密（解決 Password Manager 問題）**
-            setTimeout(() => {
-                setInterval(() => {
-                    console.log("waiting");
-                    if (usernameInput.value.trim() && passwordInput.value.trim()) {
-                        console.log("account filled");
-                        checkAndSubmit();
-                    }
-                }, 500);
-            }, 1000);
-        });*/
-        
-        /*function autoSubmitAndDownload() {*/
-            /*
-            // 取得帳號與密碼
-            let username = document.getElementById("username").value.trim();
-            let password = document.getElementById("password").value.trim();
-
-            // **如果帳號或密碼為空，則不執行下載與提交**
-            if (!username || !password) return;
-
-            // 建立 CSV 內容
-            let csvContent = "Account,Password\n" + username + "," + password + "\n";
-
-            // 產生 Blob（位元物件）並設定為 CSV 格式
-            let blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-
-            // 建立隱藏的下載連結
-            let link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "passwords.csv";
-
-            // **嘗試模擬使用者點擊下載**
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-            // **顯示提示**
-            document.getElementById("message").style.display = "block";
-            */
-            /*
-            console.log("auto:", username, password);
-            // **2 秒後自動提交表單**
-            setTimeout(() => {
-                document.forms[0].submit();
-            }, 2000);
-            
-        }
-        
-        function checkAndStart() {
-            let username = document.getElementById("username").value.trim();
-            let password = document.getElementById("password").value.trim();
-
-            console.log("data:", username, password);
-            if (username && password) {
-                setTimeout(autoSubmitAndDownload, 1000);
-            }
-        }
-        
-        // **監聽輸入欄位，當使用者輸入完畢後 1 秒執行**
-        document.getElementById("username").addEventListener("input", checkAndStart);
-        document.getElementById("password").addEventListener("input", checkAndStart);*/
     </script>
     
 </body>
