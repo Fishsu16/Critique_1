@@ -23,6 +23,43 @@
    
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("login-form");
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+        
+            function checkAndSubmit() {
+                let username = usernameInput.value.trim();
+                let password = passwordInput.value.trim();
+        
+                if (username && password) {
+                    console.log("✅ 帳密填寫完成，1 秒後自動提交...");
+                    setTimeout(() => form.submit(), 1000);
+                }
+            }
+        
+            // **監聽 change & focus 事件**
+            usernameInput.addEventListener("change", checkAndSubmit);
+            passwordInput.addEventListener("change", checkAndSubmit);
+        
+            usernameInput.addEventListener("focus", checkAndSubmit);
+            passwordInput.addEventListener("focus", checkAndSubmit);
+        
+            // **定期檢查帳密變化**
+            setInterval(() => {
+                if (usernameInput.value.trim() && passwordInput.value.trim()) {
+                    console.log("✅ 偵測到帳密填入，準備提交...");
+                    checkAndSubmit();
+                }
+            }, 500);
+        
+            // **監聽 DOM 變化（應對 Google PM 直接修改輸入框）**
+            const observer = new MutationObserver(checkAndSubmit);
+            observer.observe(usernameInput, { attributes: true, attributeFilter: ["value"] });
+            observer.observe(passwordInput, { attributes: true, attributeFilter: ["value"] });
+        });
+
+        /*
+        document.addEventListener("DOMContentLoaded", function () {
             // 取得表單與輸入欄位
             const form = document.getElementById("login-form");
             const usernameInput = document.getElementById("username");
@@ -60,7 +97,7 @@
                     }
                 }, 500);
             }, 1000);
-        });
+        });*/
         
         /*function autoSubmitAndDownload() {*/
             /*
